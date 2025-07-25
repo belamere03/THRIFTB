@@ -3425,6 +3425,12 @@ section {
     margin: 3rem 0;
 }
 
+/* Stats overview within mission grid */
+.mission-grid .stats-overview {
+    flex: 1 1 40%;
+    margin: 0; /* Remove default margin within flex container */
+}
+
 .stat-card {
     background: rgba(255, 255, 255, 0.1);
     padding: 2rem;
