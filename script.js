@@ -270,7 +270,7 @@ function handleSearch(e) {
 
 // Load Featured Items
 function loadFeaturedItems() {
-    const itemsToShow = allItems.slice(0, (currentItemsPage + 1) * itemsPerPage);
+    displayItems(allItems); // Show all items instead of paginated
     displayItems(itemsToShow);
 }
 
