@@ -148,6 +148,60 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeStatCounters(); // Add counter animation for index.html stats
 });
 
+// Counter Animation for index.html stat boxes
+function initializeStatCounters() {
+    const statCards = document.querySelectorAll('.stats-overview .animate-counter');
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateStatCounter(entry.target);
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+    
+    statCards.forEach(card => {
+        observer.observe(card);
+    });
+}
+
+function animateStatCounter(element) {
+    const numberElement = element.querySelector('.stat-number');
+    const target = parseInt(numberElement.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    const steps = 60; // Steps for smooth animation
+    const stepDuration = duration / steps;
+    const stepValue = target / steps;
+    
+    let currentValue = 0;
+    
+    element.classList.add('counting');
+    
+    const counter = setInterval(() => {
+        currentValue += stepValue;
+        
+        if (currentValue >= target) {
+            currentValue = target;
+            clearInterval(counter);
+            element.classList.remove('counting');
+        }
+        
+        // Format the number with commas for larger numbers
+        const displayValue = Math.floor(currentValue);
+        if (displayValue >= 1000) {
+            numberElement.textContent = displayValue.toLocaleString();
+        } else {
+            numberElement.textContent = displayValue;
+        }
+    }, stepDuration);
+}
+
 // Theme Management
 function initializeTheme() {
     document.documentElement.setAttribute('data-theme', currentTheme);
