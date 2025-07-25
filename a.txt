@@ -1,0 +1,22 @@
+add ecoscore
+fix filter
+
+Mkae ppl login and amke them sign pledge
+When cliked rental/buy, send sms/whatsapp msg to no      or gmail
+Add required databases
+Add student blog
+Add poster
+
+
+
+Make the filter automatically apply changes rather than doing it manually in shop page. Remove rental categories and 
+replace it with filter (same as that of shop page). Make it mobile friendly. Add an ecoscore (5 leaf system) to sort 
+products. Fix the faq section of rentals. It isnt showing the answers. Make the feature show 1 row of products and when load more is cliked, make it show another row. When clicked
+after that, make it take me to shop. When the page loads, make the top contributros show (as a green timeline). In 
+special Rental Offers (rental page) & Special Offers (home page) make it so that when i click them, they get 
+highlighted green. In the footer of all pages, extreme right to the Stay Updated and below the Legal add a logo and 
+the text 'An iniative launched by opg world school'. Use only hmtl,css,js. no react, no fast api.. DO as much as u 
+can in 10 credits.... try to complete all in 10 credits... if not, complete each part of the given given task ie for 
+eg if u have less credits skip In the footer of all pages, extreme right to the Stay Updated and below the Legal add 
+a logo and the text 'An iniative launched by opg world school'.
+

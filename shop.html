@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link active">Shop</a>
+                <a href="rental.html" class="nav-link">Rentals</a>
+                <a href="#offers" class="nav-link">Special Offers</a>
+                <a href="#contributors" class="nav-link">Contributors</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Shop</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Shop Page Content -->
+    <div class="shop-container">
+        <div class="container">
+            <div class="shop-layout">
+                
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Categories</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="all" id="categoryAll" checked>
+                                <span class="checkmark"></span>
+                                All Categories
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="furniture" class="category-filter">
+                                <span class="checkmark"></span>
+                                Furniture
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="electronics" class="category-filter">
+                                <span class="checkmark"></span>
+                                Electronics
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="clothing" class="category-filter">
+                                <span class="checkmark"></span>
+                                Clothing
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="books" class="category-filter">
+                                <span class="checkmark"></span>
+                                Books
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="home-decor" class="category-filter">
+                                <span class="checkmark"></span>
+                                Home Decor
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="bags" class="category-filter">
+                                <span class="checkmark"></span>
+                                Bags
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Price Range</h3>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" min="0">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" min="0">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceSlider" min="0" max="1000" value="500">
+                                <div class="slider-value">$0 - $<span id="sliderValue">500</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Material Type</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="wood" class="material-filter">
+                                <span class="checkmark"></span>
+                                Wood
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="metal" class="material-filter">
+                                <span class="checkmark"></span>
+                                Metal
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="plastic" class="material-filter">
+                                <span class="checkmark"></span>
+                                Plastic
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="fabric" class="material-filter">
+                                <span class="checkmark"></span>
+                                Fabric
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="glass" class="material-filter">
+                                <span class="checkmark"></span>
+                                Glass
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="ceramic" class="material-filter">
+                                <span class="checkmark"></span>
+                                Ceramic
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Sort By</h3>
+                        <select id="sortBy" class="sort-select">
+                            <option value="newest">New Arrivals</option>
+                            <option value="popular">Best Sellers</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="applyFilters">
+                            <i class="fas fa-filter"></i>
+                            Apply Filters
+                        </button>
+                        <button class="btn btn-outline" id="clearFilters">
+                            <i class="fas fa-times"></i>
+                            Clear All
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <main class="shop-main">
+                    <!-- Shop Header -->
+                    <div class="shop-header">
+                        <h1 class="shop-title">Sustainable Products</h1>
+                        <p class="shop-subtitle">Discover eco-friendly items that make a difference</p>
+                        <div class="shop-stats">
+                            <span class="results-count">Showing <span id="resultsCount">0</span> products</span>
+                            <div class="view-toggles">
+                                <button class="view-toggle active" data-view="grid">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="view-toggle" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Featured Products -->
+                    <section class="featured-products">
+                        <h2 class="section-title">Featured Products</h2>
+                        <div class="featured-grid" id="featuredGrid">
+                            <!-- Featured products will be loaded here -->
+                        </div>
+                    </section>
+
+                    <!-- Products Grid -->
+                    <section class="products-section">
+                        <div class="products-grid" id="productsGrid">
+                            <!-- Products will be loaded here -->
+                        </div>
+                    </section>
+
+                    <!-- Load More -->
+                    <div class="load-more-container">
+                        <button class="btn btn-outline" id="loadMoreProducts">
+                            <i class="fas fa-plus"></i>
+                            Load More Products
+                        </button>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal quick-view-modal" id="quickViewModal">
+        <div class="modal-content quick-view-content">
+            <span class="modal-close" onclick="closeQuickView()">&times;</span>
+            <div class="quick-view-body" id="quickViewBody">
+                <!-- Quick view content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="https://via.placeholder.com/40x40/22c55e/ffffff?text=🌱" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#rentals">Rentals</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contributors">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('faq')">FAQs</a></li>
+                        <li><a href="#" onclick="showModal('shipping')">Shipping & Returns</a></li>
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="rental.html" class="nav-link">Rentals</a>
+                <a href="offers.html" class="nav-link">Special Offers</a>
+                <a href="contributor.html" class="nav-link">Contributors</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+            <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sustainable Shopping" class="hero-image">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="highlight">Sustainable Shopping</span>
+                <br>for a Better Future
+            </h1>
+            <p class="hero-subtitle">
+                Join our community of conscious consumers and contribute to a circular economy through recycled, upcycled, and eco-friendly products.
+            </p>
+            <div class="hero-buttons">
+                <a href="shop.html" class="btn btn-primary">
+                    <i class="fas fa-shopping-cart"></i>
+                    Shop Now
+                </a>
+                <button class="btn btn-secondary" onclick="scrollToSection('donate')">
+                    <i class="fas fa-heart"></i>
+                    Donate Materials
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="mission" id="mission">
+    <div class="container">
+        <div class="mission-header">
+            <i class="fas fa-leaf leaf-icon"></i>
+            <h2 class="section-title">Our Mission</h2>
+            <p class="mission-tagline">Redefining waste, one creation at a time.</p>
+        </div>
+        <div class="mission-grid">
+            <div class="mission-text-block">
+                <p>
+                    <strong>EcoMarket</strong> is a bold student-led movement by <strong>OPG World School</strong>, where discarded materials are reborn as meaningful, sustainable creations.
+                    <br><br>
+                    ♻️ We recycle and repurpose waste into high-quality, eco-friendly products.<br>
+                    🎨 Students lead the innovation with passion, creativity, and skill.<br>
+                    ❤️ All proceeds go directly to <strong>charity</strong>, transforming trash into hope.
+                </p>
+                <p>
+                    This isn't just about products — it's about purpose. By participating, you're helping the environment, uplifting lives, and inspiring change.
+                </p>
+            </div>
+            <div class="mission-stats-block">
+                <div class="stat">
+                    <span class="stat-number">10,000+</span>
+                    <span class="stat-label">Items Upcycled</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">₹1,00,000+</span>
+                    <span class="stat-label">Raised for Charity</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">2,500+</span>
+                    <span class="stat-label">Student Innovators</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">800+</span>
+                    <span class="stat-label">Pledges Signed</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Featured Items -->
+    <section class="featured-items" id="shop">
+        <div class="container">
+            <h2 class="section-title">Featured Items</h2>
+            <div class="items-grid" id="itemsGrid">
+                <!-- Items will be dynamically loaded here -->
+            </div>
+            <div class="section-actions">
+                <button class="btn btn-outline" onclick="loadMoreItems()">Load More Items</button>
+                <a href="shop.html" class="btn btn-primary">Shop All</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discounts & Offers -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <h2 class="section-title">Special Offers</h2>
+            <div class="offers-grid">
+                <div class="offer-card featured-offer">
+                    <div class="offer-badge">LIMITED TIME</div>
+                    <h3>30% Off Recycled Furniture</h3>
+                    <p>Transform your space with sustainably sourced furniture pieces</p>
+                    <div class="offer-details">
+                        <span class="offer-code">Code: FURNITURE30</span>
+                        <span class="offer-expires">Expires: Dec 31, 2024</span>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">ECO DEAL</div>
+                    <h3>Buy 2 Get 1 Free</h3>
+                    <p>On all upcycled home decor items</p>
+                    <div class="offer-details">
+                        <span class="offer-code">Code: DECOR3</span>
+                        <span class="offer-expires">Expires: Jan 15, 2025</span>
+                    </div>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-badge">GREEN FRIDAY</div>
+                    <h3>Free Shipping Weekend</h3>
+                    <p>Free shipping on orders over $50</p>
+                    <div class="offer-details">
+                        <span class="offer-code">Code: FREESHIP</span>
+                        <span class="offer-expires">Expires: Dec 15, 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributors -->
+    <section class="contributors" id="contributors">
+        <div class="container">
+            <h2 class="section-title">Top Contributors</h2>
+            <div class="contributors-timeline" id="contributorsTimeline">
+                <!-- Contributors will be dynamically loaded here -->
+            </div>
+            <div class="section-actions">
+                <button class="btn btn-primary" onclick="showFullLeaderboard()">View Full Leaderboard</button>
+                <button class="btn btn-outline" onclick="becomeContributor()">Become a Contributor</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Information -->
+    <section class="donation" id="donate">
+        <div class="container">
+            <div class="donation-content">
+                <div class="donation-info">
+                    <h2 class="section-title">Donate Materials</h2>
+                    <p class="donation-description">
+                        Have items you no longer need? Give them a second life by donating to our community. 
+                        Your donations help others find affordable, sustainable alternatives while reducing waste.
+                    </p>
+                    <div class="donation-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-recycle"></i>
+                            <span>Reduce Environmental Impact</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Help Community Members</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-certificate"></i>
+                            <span>Get Recognition & Rewards</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="donation-form">
+                    <h3>Quick Donation Form</h3>
+                    <form id="donationForm">
+                        <div class="form-group">
+                            <label for="donorName">Your Name</label>
+                            <input type="text" id="donorName" name="donorName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="donorEmail">Email Address</label>
+                            <input type="email" id="donorEmail" name="donorEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemCategory">Item Category</label>
+                            <select id="itemCategory" name="itemCategory" required>
+                                <option value="">Select category...</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="books">Books</option>
+                                <option value="home-decor">Home Decor</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemDescription">Item Description</label>
+                            <textarea id="itemDescription" name="itemDescription" rows="3" placeholder="Describe your item(s)..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Donation
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#rentals">Rentals</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contributors">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="showModal('refund')">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

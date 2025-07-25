@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="rental.html" class="nav-link">Rentals</a>
+                <a href="#offers" class="nav-link">Special Offers</a>
+                <a href="#contributors" class="nav-link">Contributors</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Contact</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contact Page Content -->
+    <div class="contact-container">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="contact-header">
+                <h1 class="page-title">Contact Us</h1>
+                <p class="page-subtitle">Get in touch with our EcoMarket team - we're here to help with all your sustainable shopping needs</p>
+            </div>
+
+            <!-- Main Contact Content -->
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <div class="form-container">
+                        <h2 class="form-title">Send Us a Message</h2>
+                        <p class="form-subtitle">Have questions about our products, services, or sustainability initiatives? We'd love to hear from you!</p>
+                        
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name *</label>
+                                    <input type="text" id="contactName" name="contactName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input type="email" id="contactEmail" name="contactEmail" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactPurpose">Purpose of Contact *</label>
+                                <select id="contactPurpose" name="contactPurpose" required>
+                                    <option value="">Select your inquiry type...</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="donation">Donation Questions</option>
+                                    <option value="feedback">Feedback & Suggestions</option>
+                                    <option value="rental">Rental Inquiry</option>
+                                    <option value="bulk-order">Bulk Orders</option>
+                                    <option value="partnership">Partnership Opportunity</option>
+                                    <option value="support">Customer Support</option>
+                                    <option value="media">Media & Press</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Your Message *</label>
+                                <textarea id="contactMessage" name="contactMessage" rows="6" placeholder="Please describe your inquiry, question, or how we can help you..." required></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Send Message
+                                </button>
+                                <button type="reset" class="btn btn-outline">
+                                    <i class="fas fa-undo"></i>
+                                    Clear Form
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information Sidebar -->
+                <div class="contact-info-section">
+                    <!-- Store Location & Hours -->
+                    <div class="info-card location-card">
+                        <div class="info-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Store Location & Hours</h3>
+                        </div>
+                        <div class="location-details">
+                            <div class="address">
+                                <h4>EcoMarket Campus Store</h4>
+                                <p>
+                                    Building B, Ground Floor<br>
+                                    OPG World School Campus<br>
+                                    Green Valley Road, Sector 12<br>
+                                    Eco City, EC 560001
+                                </p>
+                            </div>
+                            <div class="store-hours">
+                                <h4>Store Hours</h4>
+                                <div class="hours-list">
+                                    <div class="hour-item">
+                                        <span class="day">Monday - Friday</span>
+                                        <span class="time">9:00 AM - 6:00 PM</span>
+                                    </div>
+                                    <div class="hour-item">
+                                        <span class="day">Saturday</span>
+                                        <span class="time">10:00 AM - 4:00 PM</span>
+                                    </div>
+                                    <div class="hour-item">
+                                        <span class="day">Sunday</span>
+                                        <span class="time">12:00 PM - 4:00 PM</span>
+                                    </div>
+                                    <div class="hour-item special">
+                                        <span class="day">Holidays</span>
+                                        <span class="time">Closed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="map-note">
+                                <p><i class="fas fa-info-circle"></i> Located near the main campus library, accessible via campus shuttle route 3</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="info-card contact-details-card">
+                        <div class="info-header">
+                            <i class="fas fa-phone-alt"></i>
+                            <h3>Contact Information</h3>
+                        </div>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Phone</h4>
+                                    <p><a href="tel:+918001234567">+91 800 123 4567</a></p>
+                                    <span class="method-note">Available during store hours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Email</h4>
+                                    <p><a href="mailto:hello@ecomarket.edu">hello@ecomarket.edu</a></p>
+                                    <span class="method-note">Response within 24 hours</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Live Chat</h4>
+                                    <p>Available on our website</p>
+                                    <span class="method-note">Mon-Fri, 9 AM - 5 PM</span>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-method">
+                                <div class="method-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="method-details">
+                                    <h4>Support Desk</h4>
+                                    <p><a href="mailto:support@ecomarket.edu">support@ecomarket.edu</a></p>
+                                    <span class="method-note">For technical issues & returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="info-card social-media-card">
+                        <div class="info-header">
+                            <i class="fas fa-share-alt"></i>
+                            <h3>Follow Us</h3>
+                        </div>
+                        <p class="social-description">Stay connected with our sustainability community!</p>
+                        <div class="social-links-grid">
+                            <a href="#" class="social-link-card facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                <div class="social-details">
+                                    <h4>Facebook</h4>
+                                    <span>Daily updates & community posts</span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-link-card instagram">
+                                <i class="fab fa-instagram"></i>
+                                <div class="social-details">
+                                    <h4>Instagram</h4>
+                                    <span>Behind-the-scenes & student features</span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-link-card twitter">
+                                <i class="fab fa-twitter"></i>
+                                <div class="social-details">
+                                    <h4>Twitter</h4>
+                                    <span>News & sustainability tips</span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-link-card linkedin">
+                                <i class="fab fa-linkedin-in"></i>
+                                <div class="social-details">
+                                    <h4>LinkedIn</h4>
+                                    <span>Professional updates & partnerships</span>
+                                </div>
+                            </a>
+                            <a href="#" class="social-link-card youtube">
+                                <i class="fab fa-youtube"></i>
+                                <div class="social-details">
+                                    <h4>YouTube</h4>
+                                    <span>Tutorials & student stories</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Link -->
+                    <div class="info-card faq-card">
+                        <div class="info-header">
+                            <i class="fas fa-question-circle"></i>
+                            <h3>Need Quick Answers?</h3>
+                        </div>
+                        <p>Check out our comprehensive FAQ section for instant answers to common questions.</p>
+                        <div class="faq-links">
+                            <a href="#" class="faq-link" onclick="showModal('general-faq')">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>General Shopping FAQ</span>
+                            </a>
+                            <a href="#" class="faq-link" onclick="showModal('rental-faq')">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Rental Service FAQ</span>
+                            </a>
+                            <a href="#" class="faq-link" onclick="showModal('donation-faq')">
+                                <i class="fas fa-heart"></i>
+                                <span>Donation Process FAQ</span>
+                            </a>
+                            <a href="#" class="faq-link" onclick="showModal('sustainability-faq')">
+                                <i class="fas fa-leaf"></i>
+                                <span>Sustainability Info</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Help Section -->
+            <section class="help-section">
+                <h2 class="section-title">Other Ways We Can Help</h2>
+                <div class="help-grid">
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3>Schedule a Campus Visit</h3>
+                        <p>Want to see our sustainable operations in person? Schedule a guided tour of our campus store and workshop.</p>
+                        <button class="btn btn-outline" onclick="scheduleVisit()">
+                            <i class="fas fa-calendar-plus"></i>
+                            Schedule Visit
+                        </button>
+                    </div>
+                    
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Join Our Community</h3>
+                        <p>Become part of our sustainable living community. Get exclusive updates, early access to new products, and more.</p>
+                        <button class="btn btn-outline" onclick="joinCommunity()">
+                            <i class="fas fa-user-plus"></i>
+                            Join Community
+                        </button>
+                    </div>
+                    
+                    <div class="help-card">
+                        <div class="help-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Partnership Opportunities</h3>
+                        <p>Interested in partnering with us? We're always looking for like-minded organizations to collaborate with.</p>
+                        <button class="btn btn-outline" onclick="partnershipInquiry()">
+                            <i class="fas fa-business-time"></i>
+                            Partner With Us
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="rental.html">Rentals</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contributors">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('faq')">FAQs</a></li>
+                        <li><a href="#" onclick="showModal('shipping')">Shipping & Returns</a></li>
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

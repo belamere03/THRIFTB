@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentals - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="rentals.html" class="nav-link active">Rentals</a>
+                <a href="#offers" class="nav-link">Special Offers</a>
+                <a href="#contributors" class="nav-link">Contributors</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Rentals</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Rentals Page Content -->
+    <div class="rentals-container">
+        <div class="container">
+            <!-- Rentals Header -->
+            <div class="rentals-header">
+                <h1 class="page-title">Sustainable Rentals</h1>
+                <p class="page-subtitle">Access eco-friendly products when you need them, without the commitment of ownership</p>
+            </div>
+
+            <!-- Rental Process Overview -->
+            <section class="rental-process" id="rentalProcess">
+                <h2 class="section-title">How Rental Works</h2>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-search"></i>
+                            <span class="step-number">1</span>
+                        </div>
+                        <h3>Browse & Select</h3>
+                        <p>Explore our collection of sustainable rental items. Filter by category, duration, or price to find exactly what you need.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="step-number">2</span>
+                        </div>
+                        <h3>Choose Duration</h3>
+                        <p>Select your rental period - from daily to monthly options. Extend anytime if you need it longer.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-truck"></i>
+                            <span class="step-number">3</span>
+                        </div>
+                        <h3>Delivery & Pickup</h3>
+                        <p>We deliver to your doorstep and arrange pickup when your rental period ends. Hassle-free service!</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-icon">
+                            <i class="fas fa-undo"></i>
+                            <span class="step-number">4</span>
+                        </div>
+                        <h3>Return & Repeat</h3>
+                        <p>Return items in good condition. Damage protection included. Rent again anytime you need!</p>
+                    </div>
+                </div>
+
+                <!-- Rental Policies -->
+                <div class="rental-policies">
+                    <h3>Rental Duration & Return Policies</h3>
+                    <div class="policies-grid">
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <h4>Rental Duration</h4>
+                            <ul>
+                                <li><strong>Minimum:</strong> 7 days for most items</li>
+                                <li><strong>Daily rates:</strong> Available for events & special occasions</li>
+                                <li><strong>Weekly rates:</strong> Best value for short-term needs</li>
+                                <li><strong>Monthly rates:</strong> Perfect for extended projects</li>
+                            </ul>
+                        </div>
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4>Return Policy</h4>
+                            <ul>
+                                <li><strong>Condition:</strong> Return items in same condition as received</li>
+                                <li><strong>Cleaning:</strong> Basic cleaning expected, professional cleaning covered</li>
+                                <li><strong>Extensions:</strong> Available based on item availability</li>
+                                <li><strong>Late fees:</strong> $5/day after return date</li>
+                            </ul>
+                        </div>
+                        <div class="policy-card">
+                            <div class="policy-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h4>Damage Protection</h4>
+                            <ul>
+                                <li><strong>Coverage:</strong> Normal wear and tear included</li>
+                                <li><strong>Accidents:</strong> Report within 24 hours</li>
+                                <li><strong>Replacement:</strong> Cost capped at 50% of retail value</li>
+                                <li><strong>Insurance:</strong> Optional full coverage available</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rental Categories -->
+            <section class="rental-categories" id="rentalCategories">
+                <h2 class="section-title">Rental Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="furniture">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Furniture Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Furniture</h3>
+                            <p>Sustainable furniture for temporary needs, events, or trying before buying.</p>
+                            <div class="category-details">
+                                <span class="item-count">45+ items</span>
+                                <span class="price-range">From $15/week</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('furniture')">
+                                <i class="fas fa-couch"></i>
+                                Browse Furniture
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="electronics">
+                        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Electronics Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Electronics</h3>
+                            <p>Latest tech gadgets and devices for short-term projects or testing.</p>
+                            <div class="category-details">
+                                <span class="item-count">8+ items</span>
+                                <span class="price-range">From $20/week</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('electronics')">
+                                <i class="fas fa-laptop"></i>
+                                Browse Electronics
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="tools">
+                        <img src="https://images.unsplash.com/photo-1567696911980-2eed69a46042?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Tools Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Tools & Equipment</h3>
+                            <p>Professional tools and equipment for DIY projects and home improvement.</p>
+                            <div class="category-details">
+                                <span class="item-count">60+ items</span>
+                                <span class="price-range">From $10/day</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('tools')">
+                                <i class="fas fa-tools"></i>
+                                Browse Tools
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="events">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Event Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Event Supplies</h3>
+                            <p>Everything you need for sustainable events, parties, and celebrations.</p>
+                            <div class="category-details">
+                                <span class="item-count">25+ items</span>
+                                <span class="price-range">From $5/day</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('events')">
+                                <i class="fas fa-glass-cheers"></i>
+                                Browse Events
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="outdoor">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Outdoor Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Outdoor & Sports</h3>
+                            <p>Camping gear, sports equipment, and outdoor adventure essentials.</p>
+                            <div class="category-details">
+                                <span class="item-count">35+ items</span>
+                                <span class="price-range">From $8/day</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('outdoor')">
+                                <i class="fas fa-mountain"></i>
+                                Browse Outdoor
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" data-category="home">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Home Items Rentals" class="category-image">
+                        <div class="category-content">
+                            <h3>Home & Kitchen</h3>
+                            <p>Kitchen appliances, home decor, and household essentials for temporary use.</p>
+                            <div class="category-details">
+                                <span class="item-count">40+ items</span>
+                                <span class="price-range">From $12/week</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseCategory('home')">
+                                <i class="fas fa-home"></i>
+                                Browse Home
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Rentals -->
+            <section class="featured-rentals" id="featuredRentals">
+                <h2 class="section-title">Featured Rentals</h2>
+                <p class="section-subtitle">Popular items available for immediate rental</p>
+                <div class="featured-grid" id="featuredRentalsGrid">
+                    <!-- Featured rental items will be dynamically loaded here -->
+                </div>
+                <div class="section-actions">
+                    <button class="btn btn-primary" onclick="viewAllRentals()">
+                        <i class="fas fa-th-large"></i>
+                        View All Rentals
+                    </button>
+                </div>
+            </section>
+
+            <!-- Discounted Rentals -->
+            <section class="discounted-rentals" id="discountedRentals">
+                <h2 class="section-title">Special Rental Offers</h2>
+                <div class="offers-grid">
+                    <div class="rental-offer featured-offer">
+                        <div class="offer-badge">STUDENT DISCOUNT</div>
+                        <div class="offer-content">
+                            <h3>30% Off First Rental</h3>
+                            <p>Students get 30% off their first rental with valid student ID. Perfect for dorm furnishing and project needs.</p>
+                            <div class="offer-details">
+                                <span class="offer-code">Code: STUDENT30</span>
+                                <span class="offer-expires">Valid with student verification</span>
+                            </div>
+                            <button class="btn btn-primary" onclick="applyStudentDiscount()">
+                                <i class="fas fa-graduation-cap"></i>
+                                Verify Student Status
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="rental-offer">
+                        <div class="offer-badge">EXTENDED RENTAL</div>
+                        <div class="offer-content">
+                            <h3>Rent for 30 Days, Get 10% Off!</h3>
+                            <p>Perfect for long-term projects or temporary living situations. The longer you rent, the more you save.</p>
+                            <div class="offer-details">
+                                <span class="offer-code">Code: EXTEND10</span>
+                                <span class="offer-expires">Applies automatically on 30+ day rentals</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseLongTermRentals()">
+                                <i class="fas fa-calendar-plus"></i>
+                                Browse Long-term
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="rental-offer">
+                        <div class="offer-badge">WEEKEND SPECIAL</div>
+                        <div class="offer-content">
+                            <h3>Weekend Event Package</h3>
+                            <p>Complete event setup packages at discounted weekend rates. Tables, chairs, decor, and more.</p>
+                            <div class="offer-details">
+                                <span class="offer-code">Code: WEEKEND15</span>
+                                <span class="offer-expires">Friday-Sunday rentals only</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseEventPackages()">
+                                <i class="fas fa-calendar-weekend"></i>
+                                View Packages
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="rental-offer">
+                        <div class="offer-badge">BULK RENTAL</div>
+                        <div class="offer-content">
+                            <h3>Multiple Items Discount</h3>
+                            <p>Rent 3 or more items together and save 15%. Perfect for office setups or event planning.</p>
+                            <div class="offer-details">
+                                <span class="offer-code">Code: BULK15</span>
+                                <span class="offer-expires">Applies automatically</span>
+                            </div>
+                            <button class="btn btn-outline" onclick="browseBulkRentals()">
+                                <i class="fas fa-boxes"></i>
+                                Browse Bulk
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="rental-faq" id="rentalFAQ">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item" data-faq="damage">
+                        <div class="faq-question" onclick="toggleFAQ('damage')">
+                            <h3>What happens if an item gets damaged during my rental?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We understand that accidents happen! Our rental agreement includes normal wear and tear protection. For minor damage, there's no charge. For significant damage, you'll be responsible for repair costs, but these are capped at 50% of the item's retail value. We also offer optional full coverage insurance for an additional fee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="early-return">
+                        <div class="faq-question" onclick="toggleFAQ('early-return')">
+                            <h3>Can I return an item early? Do I get a refund?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can return items early! For rentals longer than 7 days, we offer partial refunds for unused time. Weekly rentals returned more than 2 days early receive a 50% refund for the unused portion. Monthly rentals returned more than a week early receive a pro-rated refund.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="delivery">
+                        <div class="faq-question" onclick="toggleFAQ('delivery')">
+                            <h3>How does delivery and pickup work?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer free delivery and pickup within our service area for rentals over $50. Delivery typically occurs within 24-48 hours of booking confirmation. We'll contact you to schedule a convenient time window. For items under $50, there's a $15 delivery fee. Same-day delivery is available for an additional fee.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="extension">
+                        <div class="faq-question" onclick="toggleFAQ('extension')">
+                            <h3>Can I extend my rental period?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! You can extend your rental period based on item availability. Extensions can be requested up to 2 days before your original return date. The extension will be charged at the same daily/weekly rate as your original rental. Contact us through your account dashboard or customer service.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="cleaning">
+                        <div class="faq-question" onclick="toggleFAQ('cleaning')">
+                            <h3>Do I need to clean items before returning them?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We expect items to be returned in reasonable condition with basic cleaning (wiping down surfaces, removing personal items). Professional deep cleaning is not required - that's our job! However, excessively dirty items may incur a cleaning fee of $25-$75 depending on the item and condition.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="availability">
+                        <div class="faq-question" onclick="toggleFAQ('availability')">
+                            <h3>How do I know if an item is available for my dates?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our website shows real-time availability for all items. Simply select your desired rental dates on the item page to see availability and pricing. Popular items book quickly, so we recommend reserving as early as possible. You can also join our waitlist for items that are currently unavailable.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="payment">
+                        <div class="faq-question" onclick="toggleFAQ('payment')">
+                            <h3>When and how do I pay for my rental?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Payment is processed when you confirm your booking. We accept all major credit cards, PayPal, and bank transfers. A security deposit (typically 20-30% of retail value) is held on your card but not charged unless there's damage. The deposit is released within 3-5 business days after successful return.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item" data-faq="sustainability">
+                        <div class="faq-question" onclick="toggleFAQ('sustainability')">
+                            <h3>How does renting contribute to sustainability?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Renting reduces the need for manufacturing new items, decreases landfill waste, and promotes a circular economy. One rental item can serve dozens of people throughout its lifetime, significantly reducing per-person environmental impact. By choosing rentals, you're actively participating in sustainable consumption practices!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="rentals.html">Rentals</a></li>
+                        <li><a href="#offers">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Rental Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#rentalProcess">How It Works</a></li>
+                        <li><a href="#rentalCategories">Categories</a></li>
+                        <li><a href="#featuredRentals">Featured Items</a></li>
+                        <li><a href="#rentalFAQ">Rental FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('rental-terms')">Rental Terms</a></li>
+                        <li><a href="#" onclick="showModal('damage-policy')">Damage Policy</a></li>
+                        <li><a href="#" onclick="showModal('delivery-info')">Delivery Info</a></li>
+                        <li><a href="#" onclick="showModal('contact')">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest rental deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="rentals.js"></script>
+</body>
+</html>

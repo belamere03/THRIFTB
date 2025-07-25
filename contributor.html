@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for contributors page */
+        .contributors-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 80px;
+        }
+        
+        .contributors-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contributors-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .contributors-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .section-container {
+            padding: 4rem 0;
+        }
+        
+        .section-container:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .section-description {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Leaderboard Styles */
+        .leaderboard {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+        
+        .leaderboard-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+        
+        .leaderboard-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .update-info {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        .leaderboard-list {
+            padding: 0;
+        }
+        
+        .contributor-rank {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.3s ease;
+        }
+        
+        .contributor-rank:hover {
+            background: var(--bg-accent);
+        }
+        
+        .contributor-rank:last-child {
+            border-bottom: none;
+        }
+        
+        .rank-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            min-width: 60px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        .rank-number.gold {
+            color: #ffd700;
+        }
+        
+        .rank-number.silver {
+            color: #c0c0c0;
+        }
+        
+        .rank-number.bronze {
+            color: #cd7f32;
+        }
+        
+        .contributor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border: 3px solid var(--accent-primary);
+        }
+        
+        .contributor-info {
+            flex: 1;
+        }
+        
+        .contributor-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contributor-details {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .contribution-stats {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .contribution-count {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .contribution-weight {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .contribution-value {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+        
+        /* Top Contributors Profiles */
+        .top-contributors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .contributor-profile {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contributor-profile:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contributor-profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--accent-primary);
+            display: block;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-title {
+            color: var(--accent-primary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-bio {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .materials-donated {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .materials-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .materials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .material-tag {
+            background: var(--accent-primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .profile-stat {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+        }
+        
+        .stat-name {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        
+        /* Recognition Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .award-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .award-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .award-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .award-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        
+        .award-criteria {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        /* How to Become a Contributor */
+        .contribution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .step-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .step-icon {
+            font-size: 2.5rem;
+            color: var(--accent-primary);
+            margin: 1rem 0 1.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        /* Incentives Section */
+        .incentives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .incentive-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .incentive-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .incentive-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .incentive-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .incentive-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .incentive-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Success Stories */
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+        
+        .story-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .story-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .story-content {
+            padding: 2rem;
+        }
+        
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .story-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-impact {
+            background: var(--bg-green-light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-primary);
+        }
+        
+        .impact-title {
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-stats {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-description {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Update Schedule */
+        .update-schedule {
+            background: var(--bg-accent);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .update-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .update-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .update-item {
+            text-align: center;
+        }
+        
+        .update-icon {
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .update-label {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .update-value {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contributors-title {
+                font-size: 2rem;
+            }
+            
+            .contributor-rank {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .contribution-stats {
+                text-align: center;
+            }
+            
+            .success-stories {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        /* Additional styles for contributors page */
+        .contributors-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 80px;
+        }
+        
+        .contributors-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contributors-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .contributors-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .stat-card:hover::before {
+            left: 100%;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: white;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .stat-plus, .stat-text, .stat-currency {
+            font-size: 2rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .stat-currency {
+            font-size: 2.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        /* Animation for counters */
+        .animate-counter .stat-number {
+            transition: color 0.3s ease;
+        }
+        
+        .animate-counter.counting .stat-number {
+            color: var(--accent-secondary);
+        }
+        
+        .section-container {
+            padding: 4rem 0;
+        }
+        
+        .section-container:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .section-description {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Leaderboard Styles */
+        .leaderboard {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 3rem;
+        }
+        
+        .leaderboard-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .leaderboard-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .update-info {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+        
+        /* Reset Timer Styles */
+        .reset-timer {
+            text-align: right;
+        }
+        
+        .timer-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-timer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 50px;
+        }
+        
+        .time-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem;
+            border-radius: 8px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .time-label {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            opacity: 0.8;
+        }
+        
+        /* Monthly Timeline Styles */
+        .monthly-timeline {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .timeline-header {
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-header h4 {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .timeline-header i {
+            color: var(--accent-primary);
+        }
+        
+        .timeline-container {
+            position: relative;
+        }
+        
+        .timeline-track {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            position: relative;
+            margin: 2rem 0;
+        }
+        
+        .timeline-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 3px;
+            transition: width 1s ease-in-out;
+            position: relative;
+        }
+        
+        .timeline-progress::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: -3px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px white, 0 0 20px rgba(34, 197, 94, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 3px white, 0 0 20px rgba(34, 197, 94, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 3px white, 0 0 30px rgba(34, 197, 94, 0.6);
+            }
+        }
+        
+        .timeline-markers {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .timeline-marker {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+        
+        .marker-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 3px solid var(--bg-primary);
+            background: var(--border);
+            position: relative;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-marker.completed .marker-dot {
+            background: var(--accent-primary);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+        }
+        
+        .timeline-marker.active .marker-dot {
+            background: var(--accent-secondary);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            animation: glow 2s infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.5);
+            }
+        }
+        
+        .timeline-marker.upcoming .marker-dot {
+            background: var(--text-muted);
+            opacity: 0.5;
+        }
+        
+        .marker-info {
+            text-align: center;
+            min-width: 100px;
+        }
+        
+        .marker-date {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 0.875rem;
+        }
+        
+        .marker-stats {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+        
+        .timeline-marker.completed .marker-date {
+            color: var(--accent-primary);
+        }
+        
+        .timeline-marker.active .marker-date {
+            color: var(--accent-secondary);
+            font-weight: 700;
+        }
+        
+        .timeline-marker.upcoming .marker-date,
+        .timeline-marker.upcoming .marker-stats {
+            opacity: 0.5;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contributors-title {
+                font-size: 2rem;
+            }
+            
+            .stats-overview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .leaderboard-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: left;
+            }
+            
+            .reset-timer {
+                text-align: left;
+                width: 100%;
+            }
+            
+            .countdown-timer {
+                justify-content: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .time-unit {
+                min-width: 40px;
+            }
+            
+            .time-value {
+                font-size: 1.25rem;
+                min-width: 35px;
+                padding: 0.4rem;
+            }
+            
+            .timeline-markers {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: stretch;
+            }
+            
+            .timeline-marker {
+                flex-direction: row;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+                background: var(--bg-primary);
+                border-radius: 8px;
+                border-left: 4px solid var(--border);
+            }
+            
+            .timeline-marker.completed {
+                border-left-color: var(--accent-primary);
+            }
+            
+            .timeline-marker.active {
+                border-left-color: var(--accent-secondary);
+                background: var(--bg-accent);
+            }
+            
+            .marker-dot {
+                margin-bottom: 0;
+                margin-right: 0;
+            }
+            
+            .marker-info {
+                text-align: left;
+                min-width: auto;
+                flex: 1;
+            }
+            
+            .timeline-track {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="rental.html" class="nav-link">Rentals</a>
+                <a href="offers.html" class="nav-link">Special Offers</a>
+                <a href="contributor.html" class="nav-link active">Contributors</a>
+                <a href="donate.html" class="nav-link">Donate</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Contributors</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contributors Header -->
+    <section class="contributors-header">
+        <div class="container">
+            <div class="contributors-hero">
+                <h1 class="contributors-title">Our Amazing Contributors</h1>
+                <p class="contributors-subtitle">Meet the inspiring students and community members who are making a real difference through their sustainable contributions to EcoMarket.</p>
+            </div>
+            
+            <!-- Stats Overview -->
+            <div class="stats-overview">
+                <div class="stat-card animate-counter">
+                    <div class="stat-number" data-target="2500">0</div><span class="stat-plus">+</span>
+                    <div class="stat-label">Active Contributors</div>
+                </div>
+                <div class="stat-card animate-counter">
+                    <div class="stat-number" data-target="50000">0</div><span class="stat-plus">+</span>
+                    <div class="stat-label">Items Donated</div>
+                </div>
+                <div class="stat-card animate-counter">
+                    <div class="stat-number" data-target="1500">0</div><span class="stat-plus">+</span>
+                    <div class="stat-label">Materials Recycled</div>
+                </div>
+                <div class="stat-card animate-counter">
+                    <div class="stat-number" data-target="27500">0</div><span class="stat-plus">+</span>
+                    <div class="stat-label">Rupees Donated</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Contributors Leaderboard -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="section-title">Top Contributors Leaderboard</h2>
+                <p class="section-description">Celebrating our eco-champions who have made the biggest impact through their generous contributions</p>
+            </div>
+
+            <div class="leaderboard">
+                <div class="leaderboard-header">
+                    <div>
+                        <h3 class="leaderboard-title">Monthly Rankings - January 2025</h3>
+                        <div class="update-info">Updated: January 20, 2025</div>
+                    </div>
+                    <div class="reset-timer">
+                        <div class="timer-label">Next Reset:</div>
+                        <div class="countdown-timer" id="countdownTimer">
+                            <span class="time-unit">
+                                <span class="time-value" id="days">10</span>
+                                <span class="time-label">Days</span>
+                            </span>
+                            <span class="time-unit">
+                                <span class="time-value" id="hours">15</span>
+                                <span class="time-label">Hours</span>
+                            </span>
+                            <span class="time-unit">
+                                <span class="time-value" id="minutes">42</span>
+                                <span class="time-label">Min</span>
+                            </span>
+                            <span class="time-unit">
+                                <span class="time-value" id="seconds">42</span>
+                                <span class="time-label">Sec</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Monthly Timeline -->
+                <div class="monthly-timeline">
+                    <div class="timeline-header">
+                        <h4><i class="fas fa-calendar-alt"></i> Monthly Progress Timeline</h4>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-track">
+                            <div class="timeline-progress" style="width: 67%;"></div>
+                        </div>
+                        <div class="timeline-markers">
+                            <div class="timeline-marker completed" data-week="1">
+                                <div class="marker-dot"></div>
+                                <div class="marker-info">
+                                    <div class="marker-date">Week 1</div>
+                                    <div class="marker-stats">285 contributions</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker completed" data-week="2">
+                                <div class="marker-dot"></div>
+                                <div class="marker-info">
+                                    <div class="marker-date">Week 2</div>
+                                    <div class="marker-stats">392 contributions</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker active" data-week="3">
+                                <div class="marker-dot"></div>
+                                <div class="marker-info">
+                                    <div class="marker-date">Week 3</div>
+                                    <div class="marker-stats">218 contributions</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker upcoming" data-week="4">
+                                <div class="marker-dot"></div>
+                                <div class="marker-info">
+                                    <div class="marker-date">Week 4</div>
+                                    <div class="marker-stats">Upcoming</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Top Contributors Profiles -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-user-friends"></i>
+                </div>
+                <h2 class="section-title">Featured Contributors</h2>
+                <p class="section-description">Get to know our top contributors and learn about their inspiring journey towards sustainability</p>
+            </div>
+
+            <div class="top-contributors">
+                <div class="contributor-profile">
+                    <div class="profile-header">
+                        <img src="https://images.pexels.com/photos/7475191/pexels-photo-7475191.jpeg" alt="Priya Sharma" class="profile-avatar">
+                        <h3 class="profile-name">Priya Sharma</h3>
+                        <div class="profile-title">Environmental Science Club President</div>
+                    </div>
+                    <p class="profile-bio">Priya is passionate about environmental conservation and leads by example. She organizes school-wide recycling drives and educates students about sustainable practices. Her dedication has inspired over 200 students to become active contributors.</p>
+                    <div class="materials-donated">
+                        <div class="materials-title">Materials Donated:</div>
+                        <div class="materials-list">
+                            <span class="material-tag">Paper</span>
+                            <span class="material-tag">Plastic</span>
+                            <span class="material-tag">Electronics</span>
+                            <span class="material-tag">Textiles</span>
+                            <span class="material-tag">Glass</span>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-value">847</div>
+                            <div class="stat-name">Items</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">142kg</div>
+                            <div class="stat-name">Weight</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">₹18.5K</div>
+                            <div class="stat-name">Value</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contributor-profile">
+                    <div class="profile-header">
+                        <img src="https://images.pexels.com/photos/7475428/pexels-photo-7475428.jpeg" alt="Arjun Patel" class="profile-avatar">
+                        <h3 class="profile-name">Arjun Patel</h3>
+                        <div class="profile-title">Sustainability Champion</div>
+                    </div>
+                    <p class="profile-bio">Arjun believes in the power of collective action. He has created an innovative sorting system that has increased the efficiency of material collection by 40%. His technical skills and environmental passion make him a valuable contributor.</p>
+                    <div class="materials-donated">
+                        <div class="materials-title">Materials Donated:</div>
+                        <div class="materials-list">
+                            <span class="material-tag">Metal</span>
+                            <span class="material-tag">Plastic</span>
+                            <span class="material-tag">Electronics</span>
+                            <span class="material-tag">Paper</span>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-value">692</div>
+                            <div class="stat-name">Items</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">118kg</div>
+                            <div class="stat-name">Weight</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">₹15.2K</div>
+                            <div class="stat-name">Value</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contributor-profile">
+                    <div class="profile-header">
+                        <img src="https://images.pexels.com/photos/7475423/pexels-photo-7475423.jpeg" alt="Sneha Reddy" class="profile-avatar">
+                        <h3 class="profile-name">Sneha Reddy</h3>
+                        <div class="profile-title">Green Club Volunteer</div>
+                    </div>
+                    <p class="profile-bio">Sneha's creativity shines through her upcycling projects. She transforms discarded materials into beautiful art pieces and functional items. Her work has been featured in the school newsletter and inspires others to see waste as an opportunity.</p>
+                    <div class="materials-donated">
+                        <div class="materials-title">Materials Donated:</div>
+                        <div class="materials-list">
+                            <span class="material-tag">Textiles</span>
+                            <span class="material-tag">Paper</span>
+                            <span class="material-tag">Cardboard</span>
+                            <span class="material-tag">Plastic</span>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="stat-value">534</div>
+                            <div class="stat-name">Items</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">89kg</div>
+                            <div class="stat-name">Weight</div>
+                        </div>
+                        <div class="profile-stat">
+                            <div class="stat-value">₹12.8K</div>
+                            <div class="stat-name">Value</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recognition Awards -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h2 class="section-title">Recognition Awards</h2>
+                <p class="section-description">Our special trophies are made from recycled materials donated by our contributors - turning waste into symbols of achievement!</p>
+            </div>
+
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="award-title">Eco Champion Trophy</h3>
+                    <p class="award-description">Made from recycled aluminum and plastic bottles. This beautiful trophy represents the highest level of contribution and environmental commitment.</p>
+                    <div class="award-criteria">
+                        <strong>Criteria:</strong> 500+ items donated in a month, active community engagement, and mentoring other contributors.
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3 class="award-title">Sustainability Star Medal</h3>
+                    <p class="award-description">Crafted from recycled copper and glass, this medal celebrates consistent contributions and innovative recycling ideas.</p>
+                    <div class="award-criteria">
+                        <strong>Criteria:</strong> 200+ items donated monthly for 3 consecutive months, plus one innovative recycling project.
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="award-title">Green Contributor Badge</h3>
+                    <p class="award-description">Made from recycled cardboard and fabric, this badge recognizes new contributors and encourages continued participation.</p>
+                    <div class="award-criteria">
+                        <strong>Criteria:</strong> 50+ items donated in first month as a contributor, showing commitment to the cause.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Become a Contributor -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h2 class="section-title">How to Become a Contributor</h2>
+                <p class="section-description">Join our community of eco-warriors! Follow these simple steps to start making a positive impact today.</p>
+            </div>
+
+            <div class="contribution-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+                    <h3 class="step-title">Sign Up</h3>
+                    <p class="step-description">Register as a contributor on our platform with your student ID. It's free and takes less than 2 minutes!</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon"><i class="fas fa-recycle"></i></div>
+                    <h3 class="step-title">Collect Materials</h3>
+                    <p class="step-description">Gather recyclable materials from home, school, or community. We accept paper, plastic, electronics, textiles, and more.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon"><i class="fas fa-weight"></i></div>
+                    <h3 class="step-title">Sort & Weigh</h3>
+                    <p class="step-description">Sort materials by type and weigh them. Use our mobile app to log your contributions and track your impact.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon"><i class="fas fa-truck"></i></div>
+                    <h3 class="step-title">Drop Off</h3>
+                    <p class="step-description">Bring your materials to designated collection points at school or schedule a pickup for larger contributions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributor Incentives -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h2 class="section-title">Contributor Incentives</h2>
+                <p class="section-description">We believe in recognizing and rewarding our contributors for their amazing efforts towards sustainability.</p>
+            </div>
+
+            <div class="incentives-grid">
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-trophy"></i></div>
+                        <h3 class="incentive-title">Monthly Recognition</h3>
+                    </div>
+                    <p class="incentive-description">Top contributors receive special recognition in school assemblies, newsletters, and social media features. Your achievements inspire others!</p>
+                </div>
+
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-certificate"></i></div>
+                        <h3 class="incentive-title">Certificates & Awards</h3>
+                    </div>
+                    <p class="incentive-description">Earn certificates for various milestones and receive beautiful recycled trophies for exceptional contributions. Great for college applications!</p>
+                </div>
+
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="incentive-title">Skill Development</h3>
+                    </div>
+                    <p class="incentive-description">Access exclusive workshops on sustainability, entrepreneurship, and environmental science. Build valuable skills for your future!</p>
+                </div>
+
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="incentive-title">Community Impact</h3>
+                    </div>
+                    <p class="incentive-description">See the direct impact of your contributions through regular updates on charity donations and environmental metrics.</p>
+                </div>
+
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-star"></i></div>
+                        <h3 class="incentive-title">Leadership Opportunities</h3>
+                    </div>
+                    <p class="incentive-description">Top contributors can become team leaders, mentor newcomers, and help organize school-wide environmental initiatives.</p>
+                </div>
+
+                <div class="incentive-card">
+                    <div class="incentive-header">
+                        <div class="incentive-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3 class="incentive-title">Digital Badges</h3>
+                    </div>
+                    <p class="incentive-description">Collect digital badges for various achievements that can be shared on social media and included in your digital portfolio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="section-container">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h2 class="section-title">Success Stories</h2>
+                <p class="section-description">Discover how our contributors have made a lasting impact on the environment and community through their incredible efforts.</p>
+            </div>
+
+            <div class="success-stories">
+                <div class="story-card">
+                    <img src="https://images.pexels.com/photos/7475428/pexels-photo-7475428.jpeg" alt="School Recycling Drive" class="story-image">
+                    <div class="story-content">
+                        <h3 class="story-title">The Great Plastic Drive of 2024</h3>
+                        <p class="story-description">Led by Arjun Patel and his team, this school-wide initiative collected over 500kg of plastic waste in just one week. The project involved 400+ students and raised awareness about plastic pollution.</p>
+                        <div class="story-impact">
+                            <div class="impact-title">Impact Achieved:</div>
+                            <div class="impact-stats">• 500kg plastic diverted from landfills<br>• ₹25,000 raised for ocean cleanup charities<br>• 400+ students engaged in environmental action</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://images.pexels.com/photos/7475423/pexels-photo-7475423.jpeg" alt="Upcycling Workshop" class="story-image">
+                    <div class="story-content">
+                        <h3 class="story-title">From Waste to Art: Upcycling Revolution</h3>
+                        <p class="story-description">Sneha Reddy's innovative upcycling workshops have transformed how students view waste. Her creative projects have turned discarded materials into beautiful art pieces that are now displayed throughout the school.</p>
+                        <div class="story-impact">
+                            <div class="impact-title">Impact Achieved:</div>
+                            <div class="impact-stats">• 200+ art pieces created from waste<br>• 15 workshops conducted<br>• 300+ students learned upcycling skills</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg" alt="Community Outreach" class="story-image">
+                    <div class="story-content">
+                        <h3 class="story-title">Community Outreach Program</h3>
+                        <p class="story-description">Our top contributors expanded beyond school boundaries, organizing neighborhood recycling drives and educating local families about sustainable practices. This grassroots movement has created lasting change in the community.</p>
+                        <div class="story-impact">
+                            <div class="impact-title">Impact Achieved:</div>
+                            <div class="impact-stats">• 50+ families engaged<br>• 1000kg materials collected<br>• ₹40,000 raised for local charities</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <img src="https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg" alt="Community Outreach" class="story-image">
+                    <div class="story-content">
+                        <h3 class="story-title">Community Outreach Program</h3>
+                        <p class="story-description">Our top contributors expanded beyond school boundaries, organizing neighborhood recycling drives and educating local families about sustainable practices. This grassroots movement has created lasting change in the community.</p>
+                        <div class="story-impact">
+                            <div class="impact-title">Impact Achieved:</div>
+                            <div class="impact-stats">• 50+ families engaged<br>• 1000kg materials collected<br>• ₹40,000 raised for local charities</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Make a Difference?</h2>
+                <p class="cta-description">Join thousands of students who are already making a positive impact on the environment. Every contribution counts, no matter how small!</p>
+                <div class="cta-buttons">
+                    <a href="#donate" class="btn btn-secondary btn-large">Start Contributing Today</a>
+                    <button class="btn btn-outline btn-large">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="rental.html">Rentals</a></li>
+                        <li><a href="offers.html">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="contributors.html">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="showModal('refund')">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Additional JavaScript for Contributors Page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeContributorAnimations();
+            initializeResetTimer();
+        });
+
+        // Initialize counter animations for contributor page
+        function initializeContributorAnimations() {
+            const counterElements = document.querySelectorAll('.animate-counter');
+            
+            const animateCounter = (element) => {
+                const numberElement = element.querySelector('.stat-number');
+                const target = parseInt(numberElement.getAttribute('data-target'));
+                const duration = 2500; // 2.5 seconds
+                const steps = 80; // More steps for smoother animation
+                const increment = target / steps;
+                let current = 0;
+                
+                element.classList.add('counting');
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                        element.classList.remove('counting');
+                    }
+                    numberElement.textContent = Math.floor(current).toLocaleString();
+                }, duration / steps);
+            };
+
+            // Intersection Observer for counter animation
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        setTimeout(() => {
+                            animateCounter(entry.target);
+                        }, 200); // Small delay for better effect
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            counterElements.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+        }
+
+        // Reset Timer Functionality
+        function initializeResetTimer() {
+            const now = new Date();
+            const targetDate = new Date(now.getFullYear(), now.getMonth() + 1, 1); // first day of next month
+
+            function updateTimer() {
+                const now = new Date().getTime();
+                const timeLeft = targetDate - now;
+                
+                if (timeLeft <= 0) {
+                    // Timer expired
+                    document.getElementById('days').textContent = '0';
+                    document.getElementById('hours').textContent = '0';
+                    document.getElementById('minutes').textContent = '0';
+                    document.getElementById('seconds').textContent = '0';
+                    return;
+                }
+                
+                    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                // Add animation effect when numbers change
+                updateTimeUnit('days', days);
+                updateTimeUnit('hours', hours);
+                updateTimeUnit('minutes', minutes);
+                updateTimeUnit('seconds', seconds);
+            }
+            
+            function updateTimeUnit(elementId, newValue) {
+                const element = document.getElementById(elementId);
+                const currentValue = element.textContent;
+                
+                    if (currentValue !== newValue.toString()) {
+                        element.style.opacity = '1';
+                        setTimeout(() => {
+                            element.textContent = newValue;
+                            element.style.opacity = '1';
+                        }, 100);
+                    }
+                }
+
+            // Update timer immediately and then every minute
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // Timeline interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineMarkers = document.querySelectorAll('.timeline-marker');
+            
+            timelineMarkers.forEach(marker => {
+                marker.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.querySelector('.marker-dot').style.transform = 'scale(1.2)';
+                });
+                
+                marker.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.querySelector('.marker-dot').style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add loading animation for profile cards
+            const profileCards = document.querySelectorAll('.contributor-profile, .story-card');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            profileCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

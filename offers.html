@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offers & Discounts - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles for offers page */
+        .offers-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 80px;
+        }
+        
+        .offers-hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .offers-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .offers-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .search-filter-container {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin: 2rem auto 0;
+            max-width: 800px;
+        }
+        
+        .filter-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 40px 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            position: relative;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+        
+        .category-filter {
+            padding: 8px 16px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-filter.active {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+        }
+        
+        .deals-section {
+            padding: 3rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .flash-sale-banner {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flash-sale-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>') repeat;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .flash-timer {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .timer-unit {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            margin: 0 0.5rem;
+        }
+        
+        .offer-card {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .offer-badge {
+            position: absolute;
+            top: -10px;
+            right: 1rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0 0 20px 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .offer-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .offer-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .offer-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .offer-details {
+            background: var(--bg-accent);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .offer-code {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-primary);
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            border: 2px dashed var(--accent-primary);
+        }
+        
+        .code-text {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+        }
+        
+        .copy-btn {
+            background: var(--accent-primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: var(--accent-hover);
+        }
+        
+        .copy-btn.copied {
+            background: #10b981;
+        }
+        
+        .offer-expires {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+        
+        .referral-section {
+            background: var(--gradient-secondary);
+            padding: 4rem 0;
+        }
+        
+        .referral-card {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .referral-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .referral-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .referral-step {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: var(--bg-accent);
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 700;
+        }
+        
+        .clearance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .clearance-item {
+            position: relative;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .clearance-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .clearance-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #dc2626;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .clearance-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .clearance-info {
+            padding: 1.5rem;
+        }
+        
+        .clearance-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        .sale-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #dc2626;
+        }
+        
+        .savings {
+            background: #dc2626;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .no-results i {
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .offers-title {
+                font-size: 2rem;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-box {
+                min-width: auto;
+            }
+            
+            .flash-timer {
+                font-size: 1.2rem;
+            }
+            
+            .timer-unit {
+                margin: 0 0.25rem;
+                padding: 0.25rem 0.5rem;
+            }
+            
+            .referral-card {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+                <a href="rental.html" class="nav-link">Rentals</a>
+                <a href="offers.html" class="nav-link active">Special Offers</a>
+                <a href="#contributors" class="nav-link">Contributors</a>
+                <a href="#donate" class="nav-link">Donate</a>
+                <a href="#about" class="nav-link">About Us</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Special Offers</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Offers Header -->
+    <section class="offers-header">
+        <div class="container">
+            <div class="offers-hero">
+                <h1 class="offers-title">Special Offers & Discounts</h1>
+                <p class="offers-subtitle">Save big while supporting sustainability! Discover amazing deals on eco-friendly products.</p>
+            </div>
+            
+            <!-- Search and Filter -->
+            <div class="search-filter-container">
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" class="search-input" id="searchInput" placeholder="Search offers, codes, or products...">
+                    </div>
+                    <button class="category-filter active" data-category="all">All Offers</button>
+                    <button class="category-filter" data-category="seasonal">Seasonal</button>
+                    <button class="category-filter" data-category="student">Student</button>
+                    <button class="category-filter" data-category="group">Group</button>
+                    <button class="category-filter" data-category="flash">Flash Sale</button>
+                    <button class="category-filter" data-category="clearance">Clearance</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sales Banner -->
+    <section class="deals-section">
+        <div class="container">
+            <div class="flash-sale-banner">
+                <h2><i class="fas fa-bolt"></i> Flash Sale Alert!</h2>
+                <p>30% Off All Furniture - Limited Time Only!</p>
+                <div class="flash-timer" id="flashTimer">
+                    <span class="timer-unit"><span id="hours">00</span><br><small>Hours</small></span>
+                    <span class="timer-unit"><span id="minutes">00</span><br><small>Minutes</small></span>
+                    <span class="timer-unit"><span id="seconds">00</span><br><small>Seconds</small></span>
+                </div>
+                <button class="btn btn-secondary">Shop Flash Sale</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Deals Section -->
+    <section class="deals-section" id="currentDeals">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h2 class="section-title">Current Deals</h2>
+                <p>Don't miss out on these amazing sustainable savings!</p>
+            </div>
+            
+            <div class="offers-grid" id="offersGrid">
+                <!-- Seasonal Promotions -->
+                <div class="offer-card" data-category="seasonal">
+                    <div class="offer-badge">SEASONAL</div>
+                    <img src="https://images.unsplash.com/photo-1600659911670-7831fad053ee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Earth Day Special" class="offer-image">
+                    <h3 class="offer-title">Earth Day Special - 40% Off</h3>
+                    <p class="offer-description">Celebrate Earth Day with sustainable products. Get 40% off all eco-friendly home essentials and recycled furniture pieces.</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">EARTHDAY40</span>
+                            <button class="copy-btn" onclick="copyCode('EARTHDAY40', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">Valid until April 30, 2025</p>
+                    </div>
+                    <button class="btn btn-primary">Shop Earth Day Deals</button>
+                </div>
+
+                <div class="offer-card" data-category="seasonal">
+                    <div class="offer-badge">BACK TO SCHOOL</div>
+                    <img src="https://images.unsplash.com/photo-1599502898698-4be52fa3103a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Back to School" class="offer-image">
+                    <h3 class="offer-title">Back-to-School Bundle</h3>
+                    <p class="offer-description">Eco-friendly school supplies and sustainable backpacks. Perfect for conscious students starting a new semester.</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">SCHOOL2025</span>
+                            <button class="copy-btn" onclick="copyCode('SCHOOL2025', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">Valid until September 15, 2025</p>
+                    </div>
+                    <button class="btn btn-primary">Shop School Bundle</button>
+                </div>
+
+                <!-- Student Discounts -->
+                <div class="offer-card" data-category="student">
+                    <div class="offer-badge">STUDENT SPECIAL</div>
+                    <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Student Discount" class="offer-image">
+                    <h3 class="offer-title">Student Discount - 25% Off</h3>
+                    <p class="offer-description">Exclusive discount for students! Show your student ID and get 25% off all sustainable products.</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">STUDENT25</span>
+                            <button class="copy-btn" onclick="copyCode('STUDENT25', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">Valid with student ID verification</p>
+                    </div>
+                    <button class="btn btn-primary">Verify Student Status</button>
+                </div>
+
+                <!-- Group Offers -->
+                <div class="offer-card" data-category="group">
+                    <div class="offer-badge">GROUP DEAL</div>
+                    <img src="https://images.unsplash.com/photo-1563697092941-f17038b46152?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxlY298ZW58MHx8fGdyZWVufDE3NTMxMDg3Mzh8MA&ixlib=rb-4.1.0&q=85" alt="Group Purchase" class="offer-image">
+                    <h3 class="offer-title">Bulk Purchase Discount</h3>
+                    <p class="offer-description">Perfect for schools, offices, and events. Save more when you buy in bulk. Minimum 10 items required.</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">BULK15</span>
+                            <button class="copy-btn" onclick="copyCode('BULK15', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">15% off orders of 10+ items</p>
+                    </div>
+                    <button class="btn btn-primary">Contact for Quote</button>
+                </div>
+
+                <!-- Flash Sale -->
+                <div class="offer-card" data-category="flash">
+                    <div class="offer-badge">FLASH SALE</div>
+                    <img src="https://images.unsplash.com/photo-1567947262038-9eb80445eb61?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHxlY284ZW58MHx8fGdyZWVufDE3NTMxMDg3Mzh8MA&ixlib=rb-4.1.0&q=85" alt="Flash Sale" class="offer-image">
+                    <h3 class="offer-title">Weekend Flash Sale</h3>
+                    <p class="offer-description">48-hour flash sale on selected eco-friendly furniture and home decor items. Limited stock available!</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">FLASH30</span>
+                            <button class="copy-btn" onclick="copyCode('FLASH30', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">Ends in <span id="flashSaleTimer">23h 45m</span></p>
+                    </div>
+                    <button class="btn btn-primary">Shop Flash Sale</button>
+                </div>
+
+                <!-- Free Shipping -->
+                <div class="offer-card" data-category="seasonal">
+                    <div class="offer-badge">FREE SHIPPING</div>
+                    <img src="https://images.unsplash.com/photo-1593079323074-f1d77349c998?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxlY284ZW58MHx8fGdyZWVufDE3NTMxMDg3Mzh8MA&ixlib=rb-4.1.0&q=85" alt="Free Shipping" class="offer-image">
+                    <h3 class="offer-title">Free Shipping Weekend</h3>
+                    <p class="offer-description">Free shipping on all orders over $50. Share better, consume less, and save on delivery costs!</p>
+                    <div class="offer-details">
+                        <div class="offer-code">
+                            <span class="code-text">FREESHIP</span>
+                            <button class="copy-btn" onclick="copyCode('FREESHIP', this)">Copy</button>
+                        </div>
+                        <p class="offer-expires">Weekend only - ends Sunday midnight</p>
+                    </div>
+                    <button class="btn btn-primary">Start Shopping</button>
+                </div>
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No offers found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referral Program -->
+    <section class="referral-section">
+        <div class="container">
+            <div class="referral-card">
+                <div class="referral-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h2 class="section-title">Referral Program</h2>
+                <p class="offer-description">Share the love for sustainability and earn rewards! For every friend you refer, you both get $10 off your next purchase.</p>
+                
+                <div class="referral-steps">
+                    <div class="referral-step">
+                        <div class="step-number">1</div>
+                        <h4>Share Your Link</h4>
+                        <p>Send your unique referral link to friends and family</p>
+                    </div>
+                    <div class="referral-step">
+                        <div class="step-number">2</div>
+                        <h4>Friend Purchases</h4>
+                        <p>Your friend makes their first purchase using your link</p>
+                    </div>
+                    <div class="referral-step">
+                        <div class="step-number">3</div>
+                        <h4>Both Get $10</h4>
+                        <p>You both receive $10 credit for future purchases</p>
+                    </div>
+                </div>
+                
+                <div class="offer-code">
+                    <span class="code-text" id="referralLink">https://ecomarket.com/ref/YOUR123</span>
+                    <button class="copy-btn" onclick="copyCode('https://ecomarket.com/ref/YOUR123', this)">Copy Link</button>
+                </div>
+                
+                <button class="btn btn-primary btn-large">Get My Referral Link</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clearance Items -->
+    <section class="deals-section" id="clearanceSection">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-percentage"></i>
+                </div>
+                <h2 class="section-title">Clearance Items</h2>
+                <p>Last chance to grab these eco-friendly treasures at unbeatable prices!</p>
+            </div>
+            
+            <div class="clearance-grid" id="clearanceGrid">
+                <div class="clearance-item" data-category="clearance">
+                    <div class="clearance-badge">70% OFF</div>
+                    <img src="https://images.unsplash.com/photo-1600659911670-7831fad053ee?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Clearance Item" class="clearance-image">
+                    <div class="clearance-info">
+                        <h4>Recycled Wooden Desk Organizer</h4>
+                        <p>Handcrafted from reclaimed wood. Minor imperfections add character.</p>
+                        <div class="clearance-price">
+                            <span class="original-price">$49.99</span>
+                            <span class="sale-price">$14.99</span>
+                            <span class="savings">Save $35</span>
+                        </div>
+                        <button class="btn btn-primary btn-small">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="clearance-item" data-category="clearance">
+                    <div class="clearance-badge">60% OFF</div>
+                    <img src="https://images.unsplash.com/photo-1599502898698-4be52fa3103a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Clearance Item" class="clearance-image">
+                    <div class="clearance-info">
+                        <h4>Upcycled Fabric Storage Baskets</h4>
+                        <p>Set of 3 colorful storage baskets made from upcycled textiles.</p>
+                        <div class="clearance-price">
+                            <span class="original-price">$29.99</span>
+                            <span class="sale-price">$11.99</span>
+                            <span class="savings">Save $18</span>
+                        </div>
+                        <button class="btn btn-primary btn-small">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="clearance-item" data-category="clearance">
+                    <div class="clearance-badge">50% OFF</div>
+                    <img src="https://images.unsplash.com/photo-1492496913980-501348b61469?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxzdXN0YWluYWJsZXxlbnwwfHx8Z3JlZW58MTc1MzEwODcyNnww&ixlib=rb-4.1.0&q=85" alt="Clearance Item" class="clearance-image">
+                    <div class="clearance-info">
+                        <h4>Eco-Friendly Plant Pots</h4>
+                        <p>Biodegradable plant pots made from coconut coir. Perfect for seedlings.</p>
+                        <div class="clearance-price">
+                            <span class="original-price">$19.99</span>
+                            <span class="sale-price">$9.99</span>
+                            <span class="savings">Save $10</span>
+                        </div>
+                        <button class="btn btn-primary btn-small">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="rental.html">Rentals</a></li>
+                        <li><a href="offers.html">Special Offers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contributors">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                        <li><a href="#" onclick="showModal('refund')">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Flash Sale Countdown Timer
+        function updateFlashTimer() {
+            const endTime = new Date();
+            endTime.setHours(endTime.getHours() + 24); // 24 hours from now
+            
+            function updateTimer() {
+                const now = new Date();
+                const timeLeft = endTime - now;
+                
+                if (timeLeft > 0) {
+                    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                } else {
+                    document.getElementById('flashTimer').textContent = 'Sale Ended!';
+                }
+            }
+            
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        // Copy to clipboard functionality
+        function copyCode(code, button) {
+            navigator.clipboard.writeText(code).then(function() {
+                button.textContent = 'Copied!';
+                button.classList.add('copied');
+                setTimeout(function() {
+                    button.textContent = 'Copy';
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Search and Filter functionality
+        function initializeFilters() {
+            const searchInput = document.getElementById('searchInput');
+            const categoryFilters = document.querySelectorAll('.category-filter');
+            const offerCards = document.querySelectorAll('.offer-card, .clearance-item');
+            const noResults = document.getElementById('noResults');
+            
+            function filterOffers() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const activeCategory = document.querySelector('.category-filter.active').dataset.category;
+                let visibleCount = 0;
+                
+                offerCards.forEach(card => {
+                    const cardCategory = card.dataset.category;
+                    const cardText = card.textContent.toLowerCase();
+                    
+                    const matchesSearch = cardText.includes(searchTerm);
+                    const matchesCategory = activeCategory === 'all' || cardCategory === activeCategory;
+                    
+                    if (matchesSearch && matchesCategory) {
+                        card.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide no results message
+                noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+            
+            // Search input event listener
+            searchInput.addEventListener('input', filterOffers);
+            
+            // Category filter event listeners
+            categoryFilters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    categoryFilters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    filterOffers();
+                });
+            });
+        }
+
+        // Initialize page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            updateFlashTimer();
+            initializeFilters();
+        });
+    </script>
+</body>
+</html>
