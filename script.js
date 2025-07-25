@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadFeaturedItems();
     loadContributors();
     setupSmoothScrolling();
-    setupScrollAnimations();
+    initializeStatCounters(); // Add counter animation for index.html stats
 });
 
 // Theme Management
