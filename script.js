@@ -268,7 +268,7 @@ function handleSearch(e) {
     displayItems(filteredItems);
 }
 
-// Load Featured Items
+// Load Featured Items - Show all items by default
 function loadFeaturedItems() {
     displayItems(allItems); // Show all items instead of paginated
 
