@@ -236,7 +236,11 @@ function setupEventListeners() {
     document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
     
     // Search functionality
-    document.getElementById('searchInput').addEventListener('input', handleSearch);
+    // Search functionality (optional)
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', handleSearch);
+    }
     
     // Form submissions
     document.getElementById('donationForm').addEventListener('submit', handleDonationSubmit);
