@@ -235,7 +235,6 @@ function setupEventListeners() {
     // Mobile menu toggle
     document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
     
-    // Search functionality
     // Search functionality (optional)
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
